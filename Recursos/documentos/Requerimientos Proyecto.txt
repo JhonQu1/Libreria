@@ -1,0 +1,13 @@
+
+**Descripción del requerimiento**: Sistema de gestión de libros
+- Los usuarios podrán registrar libros en el sistema, incluyendo información como título, autor, año de publicación y género.
+- Cada libro estará asociado a un usuario y solo el usuario propietario podrá modificar o eliminar sus propios libros.
+- Los usuarios podrán buscar libros por título o autor.
+- Debe haber un mecanismo de autenticación y autorización para proteger las operaciones y los recursos.
+- Los usuarios autenticados podrán realizar las siguientes operaciones a través de servicios REST:
+    - Crear un nuevo libro.
+    - Actualizar la información de un libro existente.
+    - Eliminar un libro.
+    - Obtener una lista de todos los libros registrados.
+    - Buscar libros por título o autor.
+    
