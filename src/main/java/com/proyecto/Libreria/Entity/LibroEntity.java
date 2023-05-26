@@ -34,10 +34,7 @@ public class LibroEntity {
     private EditorialEntity editorialId;
 
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "generos",
-            joinColumns = @JoinColumn(name = "libroId"),
-            inverseJoinColumns = @JoinColumn(name = "generoId"))
+    @OneToMany(mappedBy = "generoId", cascade = CascadeType.ALL)
     @Column(name="listaGeneros")
     private List<GeneroEntity> listaGeneros;
 

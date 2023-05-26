@@ -18,9 +18,6 @@ public class PrestamoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="idUsuario")
-    private Long idUsuario;
-
     @Column(name="fechaPrestamo")
     private String fechaPrestamo;
 

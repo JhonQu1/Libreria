@@ -16,7 +16,7 @@ public class EditorialEntity {
     @Id
     @Column(name="editorialId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long editorial;
+    private Long id;
 
     @Column(name="nombreEditorial")
     private String nombreEditorial;

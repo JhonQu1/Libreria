@@ -23,7 +23,7 @@ public class UsuarioEntity {
     private String nombre;
 
     @Column(name="autenticado")
-    private boolean autenticado;
+    private Boolean autenticado;
 
     @Column(name="telefono")
     private String telefono;

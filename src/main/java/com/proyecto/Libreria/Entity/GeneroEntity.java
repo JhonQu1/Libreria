@@ -14,17 +14,14 @@ import java.util.List;
 @Table(name="generos")
 public class GeneroEntity {
     @Id
-    @Column(name="generoId")
+    @Column(name="Id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name="nombreGenero")
     private String nombreGenero;
 
-    @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "libros",
-            joinColumns = @JoinColumn(name = "generoId"),
-            inverseJoinColumns = @JoinColumn(name = "libroId"))
-    @Column(name="listaGeneros")
-    private List<LibroEntity> listaGeneros;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "generoId")
+    private LibroEntity generoId;
 }
