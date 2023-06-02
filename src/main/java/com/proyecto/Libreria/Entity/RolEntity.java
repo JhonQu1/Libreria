@@ -21,9 +21,9 @@ public class RolEntity {
     @Column(name="nombreRol")
     private String nombreRol;
 
-    @OneToMany(mappedBy = "rolId", cascade = CascadeType.ALL)
-    @Column(name="listaUsuarios")
-    private List<UsuarioEntity> listaUsuarios;
+    @OneToMany(mappedBy = "rolId")
+    @Column(name="usuarios")
+    private List<UsuarioEntity> Usuarios;
 }
 
 

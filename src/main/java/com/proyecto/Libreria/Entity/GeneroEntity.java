@@ -1,5 +1,6 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,7 +22,11 @@ public class GeneroEntity {
     @Column(name="nombreGenero")
     private String nombreGenero;
 
-    @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "generoId")
-    private LibroEntity generoId;
+    //@OneToMany(mappedBy = "generoId", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "libro",unique = false)
+    @JsonIgnoreProperties("libros")
+    //@JsonManagedReference
+    private List<LibroEntity> libros;
+
 }

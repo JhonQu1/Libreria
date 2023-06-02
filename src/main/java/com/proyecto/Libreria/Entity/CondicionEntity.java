@@ -5,24 +5,22 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Table(name="paises")
-public class PaisEntity {
+@Table(name="condiciones")
+public class CondicionEntity {
+
     @Id
-    @Column(name="paisId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name="nombre")
-    private String nombre;
+    @Column(name = "condicion",unique = false)
+    private String condicion;
 
-    @OneToMany(mappedBy = "paisId")
-    //@Column(name="autorId")
-    private List<AutorEntity> autores;
+    @OneToOne(mappedBy = "condicion")
+    private CopiasLibroEntity copiasLibro;
+
 
 }

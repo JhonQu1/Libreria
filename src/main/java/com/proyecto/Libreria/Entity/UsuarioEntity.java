@@ -22,18 +22,18 @@ public class UsuarioEntity {
     @Column(name="nombre")
     private String nombre;
 
-    @Column(name="autenticado")
-    private Boolean autenticado;
+    @Column(name="apellido")
+    private String apellido;
 
     @Column(name="telefono")
     private String telefono;
 
     @OneToMany(mappedBy = "usuarioId", cascade = CascadeType.ALL)
-    @Column(name="listaPrestamos")
-    private List<PrestamoEntity> listaPrestamos;
+    //@Column(name="listaPrestamos")
+    private List<PrestamoEntity> prestamos;
 
     @ManyToOne
-    @JoinColumn(name = "rolId")
+    @JoinColumn(name = "rolId",unique = false)
     private RolEntity rolId;
 
 

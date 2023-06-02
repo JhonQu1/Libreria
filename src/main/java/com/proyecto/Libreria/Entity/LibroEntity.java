@@ -1,5 +1,6 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,22 +26,23 @@ public class LibroEntity {
     private String fechaPublicacion;
 
     @ManyToOne
-    @JoinColumn(name = "autorId")
+    @JoinColumn(name = "autorId", unique = false)
+    @JsonIgnoreProperties("autorId")
+    @JsonBackReference
     private AutorEntity autorId;
 
-
     @ManyToOne
-    @JoinColumn(name = "editorialId")
+    @JoinColumn(name = "editorialId", unique = false)
+    @JsonIgnoreProperties("editorialId")
+    //@JsonBackReference
     private EditorialEntity editorialId;
 
-
-    @OneToMany(mappedBy = "generoId", cascade = CascadeType.ALL)
-    @Column(name="listaGeneros")
-    private List<GeneroEntity> listaGeneros;
-
     @ManyToOne
-    @JoinColumn(name = "prestamoId")
-    private PrestamoEntity prestamoId;
+    @JoinColumn(name = "generoId",unique = false)
+    @JsonIgnoreProperties("generoId")
+    //@JsonBackReference
+    private GeneroEntity generoId;
+
 
 
 }

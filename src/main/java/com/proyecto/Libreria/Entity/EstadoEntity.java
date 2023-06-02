@@ -1,9 +1,13 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,9 +23,10 @@ public class EstadoEntity {
     @Column(name="estado")
     private String estado;
 
-    @ManyToOne
-    @JoinColumn(name = "prestamoId")
+    @OneToOne(mappedBy = "estado")
+    //@JoinColumn(name = "prestamoId")
     private PrestamoEntity prestamoId;
+
 
 
 }

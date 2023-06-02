@@ -1,5 +1,7 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,22 +21,31 @@ public class PrestamoEntity {
     private Long id;
 
     @Column(name="fechaPrestamo")
-    private String fechaPrestamo;
+    private String fechaInicioPrestamo;
 
     @Column(name="fechaEntrega")
-    private String fechaEntrega;
+    private String fechaEntregaPrestamo;
+
+    @Column(name="cantidadLibros")
+    private int cantidadLibrosPrestamo;
 
     @ManyToOne
-    @JoinColumn(name = "usuarioId")
+    @JoinColumn(name = "usuarioId", unique = false)
+    @JsonIgnoreProperties("usuarioId")
     private UsuarioEntity usuarioId;
 
-    @OneToMany(mappedBy = "prestamoId", cascade = CascadeType.ALL)
-    @Column(name = "listaEstados")
-    private List<EstadoEntity> listaEstados;
+    @OneToOne
+    @JoinColumn(name = "estadoId",unique = false)
+    @JsonIgnoreProperties("estado")
+    private EstadoEntity estado;
 
-    @OneToMany(mappedBy = "prestamoId", cascade = CascadeType.ALL)
-    @Column(name = "listaLibros")
-    private List<LibroEntity> listaLibros;
+    @ManyToMany
+    @JoinTable(name = "copiasLIbroId", joinColumns = @JoinColumn(name = "prestamoId"),
+            inverseJoinColumns = @JoinColumn(name = "copiasLIbroId",unique = false))
+    private List<CopiasLibroEntity> copiasLIbroId;
+
+
+
 
 
 }

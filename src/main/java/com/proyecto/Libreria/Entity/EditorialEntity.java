@@ -1,10 +1,12 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.*;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -21,9 +23,12 @@ public class EditorialEntity {
     @Column(name="nombreEditorial")
     private String nombreEditorial;
 
-    @OneToMany(mappedBy = "editorialId", cascade = CascadeType.ALL)
-    @Column(name="listaLibros")
-    private List<LibroEntity> listaLibros;
+    //@OneToMany(mappedBy = "editorialId", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "libro",unique = false)
+    @JsonIgnoreProperties("libros")
+    //@JsonManagedReference
+    private List<LibroEntity> Libros;
 }
 
 
