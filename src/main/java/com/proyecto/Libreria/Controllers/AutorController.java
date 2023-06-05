@@ -58,7 +58,7 @@ public class AutorController {
 
         if (AutorOptional.isPresent()) {
             AutorEntity AutorExistente = AutorOptional.get();
-            AutorExistente.setId(autor.getId());
+            //AutorExistente.setId(autor.getId());
             AutorExistente.setNombreAutor(autor.getNombreAutor());
             AutorExistente.setApellidoAutor(autor.getApellidoAutor());
             AutorExistente.setFechaNacimiento(autor.getFechaNacimiento());
