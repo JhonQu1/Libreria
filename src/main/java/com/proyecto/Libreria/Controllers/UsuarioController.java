@@ -1,6 +1,5 @@
 package com.proyecto.Libreria.Controllers;
 
-import com.proyecto.Libreria.Entity.LibroEntity;
 import com.proyecto.Libreria.Entity.UsuarioEntity;
 import com.proyecto.Libreria.Services.UsuariosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +79,16 @@ public class UsuarioController {
             return new ResponseEntity<>("Usuario actualizado correctamente", HttpStatus.OK);
         } else {
             return new ResponseEntity<>("El Usuario No existe", HttpStatus.NOT_FOUND);
+        }
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<UsuarioEntity> consultarPorNombre(@PathVariable String nombre) {
+        Optional<UsuarioEntity> usuario = usuariosService.consultaPornombre(nombre);
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.notFound().build();
         }
     }
 

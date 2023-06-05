@@ -43,6 +43,15 @@ public class LibrosServiceImpl implements LibrosService{
     return libroRepository.save(libro);
     }
 
+    @Override
+    public Optional<LibroEntity> consultaPornombre(String titulo) {
+        return libroRepository.findBytitulo(titulo);
+    }
+
+    @Override
+    public Optional<LibroEntity> consultaPornombreAutor(String nombreAutor) {
+        return libroRepository.findBynombreAutor(nombreAutor);
+    }
 
 
 }

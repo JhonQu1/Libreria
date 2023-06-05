@@ -41,4 +41,10 @@ public class UsuariosServiceImpl implements UsuariosService {
     public UsuarioEntity ModificarUsuario(UsuarioEntity usuario) {
         return usuarioRepository.save(usuario);
     }
+
+    @Override
+    public Optional<UsuarioEntity> consultaPornombre(String nombre) {
+        return usuarioRepository.findBynombre(nombre);
+    }
+
 }

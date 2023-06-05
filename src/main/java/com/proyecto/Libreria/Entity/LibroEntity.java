@@ -23,6 +23,9 @@ public class LibroEntity {
     @Column(name="fechaPublicacion")
     private String fechaPublicacion;
 
+    @Column(name = "nombreAutor")
+    private String nombreAutor;
+
     @ManyToOne
     @JoinColumn(name = "autorId", unique = false)
     @JsonIgnoreProperties("autorId")

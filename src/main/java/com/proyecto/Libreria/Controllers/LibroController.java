@@ -2,6 +2,7 @@ package com.proyecto.Libreria.Controllers;
 
 import com.proyecto.Libreria.Entity.AutorEntity;
 import com.proyecto.Libreria.Entity.LibroEntity;
+import com.proyecto.Libreria.Entity.UsuarioEntity;
 import com.proyecto.Libreria.Services.AutoresService;
 import com.proyecto.Libreria.Services.LibrosService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,6 +67,7 @@ public class LibroController {
             libroExistente.setFechaPublicacion(libro.getFechaPublicacion());
             //libroExistente.setEditorialId(libro.getEditorialId());
             libroExistente.setAutorId(libro.getAutorId());
+            libroExistente.setNombreAutor(libro.getNombreAutor());
 
             LibroEntity libroActualizado = librosService.ModificarLibro(libroExistente);
             return new ResponseEntity<>("Libro actualizado correctamente", HttpStatus.OK);
@@ -74,5 +76,25 @@ public class LibroController {
         }
     }
 
+
+    @GetMapping("/titulo/{nombre}")
+    public ResponseEntity<LibroEntity> consultarPornombre(@PathVariable String nombre) {
+        Optional<LibroEntity> usuario = librosService.consultaPornombre(nombre);
+        if (usuario.isPresent()) {
+            return ResponseEntity.ok(usuario.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/nombreautor/{nombre}")
+    public ResponseEntity<LibroEntity> consultarnombreAutor(@PathVariable String nombreAutor) {
+        Optional<LibroEntity> autorNombre = librosService.consultaPornombreAutor(nombreAutor);
+        if (autorNombre.isPresent()) {
+            return ResponseEntity.ok(autorNombre.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 
 }

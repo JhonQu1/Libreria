@@ -13,5 +13,6 @@ public interface UsuariosService {
     UsuarioEntity insertarUsuario(UsuarioEntity libro);
     void EliminarUsuario(Long id);
     UsuarioEntity ModificarUsuario(UsuarioEntity libro);
+    Optional<UsuarioEntity> consultaPornombre(String nombre);
 
 }
