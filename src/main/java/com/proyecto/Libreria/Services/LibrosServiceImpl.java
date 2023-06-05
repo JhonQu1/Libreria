@@ -1,6 +1,8 @@
 package com.proyecto.Libreria.Services;
 
+import com.proyecto.Libreria.Entity.AutorEntity;
 import com.proyecto.Libreria.Entity.LibroEntity;
+import com.proyecto.Libreria.Repository.AutorRepository;
 import com.proyecto.Libreria.Repository.LibroRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +15,9 @@ public class LibrosServiceImpl implements LibrosService{
 
     @Autowired
     private LibroRepository libroRepository;
+    @Autowired
+    private AutorRepository autorRepository;
+
     @Override
     public List<LibroEntity> consultaTodos() {
         return libroRepository.findAll();
@@ -37,6 +42,7 @@ public class LibrosServiceImpl implements LibrosService{
     public LibroEntity ModificarLibro(LibroEntity libro) {
     return libroRepository.save(libro);
     }
+
 
 
 }

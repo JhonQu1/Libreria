@@ -1,6 +1,8 @@
 package com.proyecto.Libreria.Controllers;
 
+import com.proyecto.Libreria.Entity.AutorEntity;
 import com.proyecto.Libreria.Entity.LibroEntity;
+import com.proyecto.Libreria.Services.AutoresService;
 import com.proyecto.Libreria.Services.LibrosService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,6 +18,8 @@ public class LibroController {
 
     @Autowired
     private LibrosService librosService;
+    @Autowired
+    private AutoresService autoresService;
 
     @GetMapping(value = "getall")
     public ResponseEntity<List<LibroEntity>> consultaLibrosGeneral() {
@@ -62,7 +66,6 @@ public class LibroController {
             libroExistente.setFechaPublicacion(libro.getFechaPublicacion());
             //libroExistente.setEditorialId(libro.getEditorialId());
             libroExistente.setAutorId(libro.getAutorId());
-            //libroExistente.setPrestamoId(libro.getPrestamoId());
 
             LibroEntity libroActualizado = librosService.ModificarLibro(libroExistente);
             return new ResponseEntity<>("Libro actualizado correctamente", HttpStatus.OK);
@@ -70,7 +73,6 @@ public class LibroController {
             return new ResponseEntity<>("El libro no existe", HttpStatus.NOT_FOUND);
         }
     }
-
 
 
 }

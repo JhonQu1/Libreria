@@ -1,5 +1,6 @@
 package com.proyecto.Libreria.Services;
 
+import com.proyecto.Libreria.Entity.AutorEntity;
 import com.proyecto.Libreria.Entity.LibroEntity;
 
 import java.util.List;

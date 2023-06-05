@@ -1,6 +1,8 @@
 
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,6 +16,8 @@ import java.util.List;
 @NoArgsConstructor
 @Table(name="usuarios")
 public class UsuarioEntity {
+
+
     @Id
     @Column(name="usuarioId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,11 +33,15 @@ public class UsuarioEntity {
     private String telefono;
 
     @OneToMany(mappedBy = "usuarioId", cascade = CascadeType.ALL)
-    //@Column(name="listaPrestamos")
+    //@JoinColumn(name = "prestamo",unique = false)
+    @JsonIgnoreProperties("prestamos")
+    //@JsonManagedReference
     private List<PrestamoEntity> prestamos;
 
     @ManyToOne
-    @JoinColumn(name = "rolId",unique = false)
+    //@JoinColumn(name = "idRol",unique = false)
+    @JsonIgnoreProperties("rolId")
+    //@JsonBackReference
     private RolEntity rolId;
 
 

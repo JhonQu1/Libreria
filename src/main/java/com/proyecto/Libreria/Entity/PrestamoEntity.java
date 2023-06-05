@@ -17,6 +17,7 @@ import java.util.List;
 @Table(name="prestamos")
 public class PrestamoEntity {
     @Id
+    @Column(name="prestamo")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -32,6 +33,7 @@ public class PrestamoEntity {
     @ManyToOne
     @JoinColumn(name = "usuarioId", unique = false)
     @JsonIgnoreProperties("usuarioId")
+    //@JsonBackReference
     private UsuarioEntity usuarioId;
 
     @OneToOne

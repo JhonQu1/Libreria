@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import java.util.List;
-
 @Entity
 @Getter
 @Setter
@@ -31,6 +29,7 @@ public class LibroEntity {
     @JsonBackReference
     private AutorEntity autorId;
 
+
     @ManyToOne
     @JoinColumn(name = "editorialId", unique = false)
     @JsonIgnoreProperties("editorialId")
@@ -42,6 +41,8 @@ public class LibroEntity {
     @JsonIgnoreProperties("generoId")
     //@JsonBackReference
     private GeneroEntity generoId;
+
+
 
 
 

@@ -29,4 +29,6 @@ public class GeneroEntity {
     //@JsonManagedReference
     private List<LibroEntity> libros;
 
+
+
 }

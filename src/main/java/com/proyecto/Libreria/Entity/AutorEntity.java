@@ -34,15 +34,16 @@ public class AutorEntity {
     @ManyToOne
     @JoinColumn(name = "paisId", unique = false)
     @JsonIgnoreProperties("paisId")
+    //@JsonBackReference
     private PaisEntity paisId;
 
-    /*//@OneToMany(mappedBy = "autorId",cascade = CascadeType.ALL)
+    //@OneToMany(mappedBy = "autorId",cascade = CascadeType.ALL)
     @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "libro",unique = false)
+    //@JoinColumn(name = "libro",unique = false)
     @JsonIgnoreProperties("libros")
     @JsonManagedReference
-    //@JsonBackReference
-    private List<LibroEntity> libros;*/
+    private List<LibroEntity> libros;
+
 
 
 }

@@ -1,5 +1,7 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,8 +23,12 @@ public class PaisEntity {
     @Column(name="nombre")
     private String nombre;
 
-    @OneToMany(mappedBy = "paisId")
-    //@Column(name="autorId")
+
+    //@OneToMany(mappedBy = "paisId",cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "autores",unique = false)
+    @JsonIgnoreProperties("autores")
+    //@JsonManagedReference
     private List<AutorEntity> autores;
 
 }

@@ -1,5 +1,6 @@
 package com.proyecto.Libreria.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -21,9 +22,12 @@ public class RolEntity {
     @Column(name="nombreRol")
     private String nombreRol;
 
-    @OneToMany(mappedBy = "rolId")
-    @Column(name="usuarios")
-    private List<UsuarioEntity> Usuarios;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "usuario",unique = false)
+    @JsonIgnoreProperties("usuarios")
+    //@JsonManagedReference
+    private List<UsuarioEntity> usuarios;
+
 }
 
 
